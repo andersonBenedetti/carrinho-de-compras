@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
+import ProductCard from '../ProductCard/ProductCard';
+
 import api from '../../api/api';
 
 import styles from './Products.module.css';
@@ -16,5 +18,13 @@ export default function Products() {
       .catch((error) => console.log(error));
   }, []);
 
-  return <section className={`container ${styles.products}`}></section>;
+  return (
+    <section className="container">
+      <div className={styles.products}>
+        {products.map((product) => (
+          <ProductCard key={product.id} data={product} />
+        ))}
+      </div>
+    </section>
+  );
 }
