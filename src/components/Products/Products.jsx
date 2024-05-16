@@ -1,16 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
+import AppContext from '../../context/AppContext';
 
 import ProductCard from '../ProductCard/ProductCard';
+import Loading from '../Loading.jsx/Loading';
 
 import api from '../../api/api';
 
 import styles from './Products.module.css';
-import Loading from '../Loading.jsx/Loading';
 
 export default function Products() {
-  const [products, setProducts] = useState([]);
-
-  const [loading, setLoading] = useState(true);
+  const {products, setProducts, loading, setLoading} = useContext(AppContext);
 
   useEffect(() => {
     api
